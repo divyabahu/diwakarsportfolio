@@ -15,7 +15,9 @@ export default function Certifications() {
         <div className="cert__grid">
           {certifications.map(c => (
             <div key={c.code} className="cert__card panel">
-              {c.image ? (
+              {c.badge ? (
+                <img src={c.badge} alt={`${c.name} badge`} className="cert__badge-img" />
+              ) : c.image ? (
                 <button
                   type="button"
                   className="cert__thumb-btn"
@@ -27,13 +29,18 @@ export default function Certifications() {
               ) : (
                 <div className="cert__badge mono">{c.code}</div>
               )}
-              <div>
+              <div className="cert__body">
                 <div className="cert__name">{c.name}</div>
                 <div className="cert__level mono">{c.level}</div>
                 {c.issued && (
                   <div className="cert__meta mono">
                     Issued {c.issued}{c.expires ? ` · Expires ${c.expires}` : ''}
                   </div>
+                )}
+                {c.image && (
+                  <button type="button" className="cert__view-link mono" onClick={() => setPreview(c)}>
+                    view certificate →
+                  </button>
                 )}
               </div>
             </div>
@@ -63,15 +70,23 @@ export default function Certifications() {
           padding: 8px 10px; flex-shrink: 0;
           background: rgba(255,159,28,0.06);
         }
+        .cert__badge-img { width: 76px; height: 76px; object-fit: contain; flex-shrink: 0; }
         .cert__thumb-btn {
           padding: 0; border: 1px solid rgba(255,159,28,0.35); border-radius: 8px;
           overflow: hidden; flex-shrink: 0; cursor: pointer; background: none;
           width: 96px; height: 72px;
         }
         .cert__thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .cert__body { display: flex; flex-direction: column; gap: 2px; }
         .cert__name { font-size: 14.5px; font-weight: 500; }
         .cert__level { font-size: 11px; color: var(--text-faint); margin-top: 3px; }
         .cert__meta { font-size: 10.5px; color: var(--text-faint); margin-top: 4px; opacity: 0.8; }
+        .cert__view-link {
+          background: none; border: none; padding: 0; margin-top: 6px;
+          font-size: 11px; color: var(--azure); cursor: pointer; text-align: left;
+          width: fit-content;
+        }
+        .cert__view-link:hover { text-decoration: underline; }
 
         .cert__overlay {
           position: fixed; inset: 0; background: rgba(4,8,14,0.85);
