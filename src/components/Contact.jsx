@@ -43,6 +43,15 @@ export default function Contact() {
             <span className="mono contact__label">location</span>
             <span className="contact__value">{profile.location}</span>
           </div>
+          {profile.resume && (
+            <div className="contact__row">
+              <span className="mono contact__label">resume</span>
+              <a href={profile.resume} target="_blank" rel="noreferrer" className="contact__value">
+                Divya_Bahu_Diwakar_Resume.pdf
+              </a>
+              <a href={profile.resume} download className="contact__copy mono">download</a>
+            </div>
+          )}
         </div>
       </div>
 

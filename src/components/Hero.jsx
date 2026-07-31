@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="hero__copy">
           <div className="eyebrow">status: available for new engagements</div>
           <h1 className="hero__title">
-            I build cloud platforms that stay <span className="hero__accent">up</span>,
+            Built cloud platforms that stay <span className="hero__accent">up</span>,
             <br /> stay <span className="hero__accent">governed</span>, and stay
             <br /> <span className="hero__accent">under budget.</span>
           </h1>
@@ -16,6 +16,9 @@ export default function Hero() {
           <div className="hero__cta">
             <a href="#contact" className="btn btn--primary mono">contact.init()</a>
             <a href="#experience" className="btn btn--ghost mono">view --experience</a>
+            {profile.resume && (
+              <a href={profile.resume} download className="btn btn--ghost mono">download --resume</a>
+            )}
           </div>
 
           <div className="hero__metrics">
