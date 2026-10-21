@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import { profile } from '../data.js'
 
 const links = [
-  { href: '#about', label: 'about' },
-  { href: '#skills', label: 'stack' },
-  { href: '#experience', label: 'experience' },
-  { href: '#projects', label: 'projects' },
-  { href: '#certifications', label: 'certs' },
-  { href: '#contact', label: 'contact' },
+  { href: '/#about', label: 'about' },
+  { href: '/#skills', label: 'stack' },
+  { href: '/#experience', label: 'experience' },
+  { href: '/#projects', label: 'projects' },
+  { href: '/#certifications', label: 'certs' },
+  { href: '/blogs/', label: 'blogs' },
+  { href: '/#contact', label: 'contact' },
 ]
 
 export default function Navbar() {
@@ -23,7 +24,7 @@ export default function Navbar() {
   return (
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="container navbar__inner">
-        <a href="#top" className="navbar__brand mono">
+        <a href="/#top" className="navbar__brand mono">
           <span className="navbar__dot" />
           {profile.name.split(' ').map(w => w[0]).join('')}<span className="navbar__brand-full"> · {profile.name}</span>
         </a>
