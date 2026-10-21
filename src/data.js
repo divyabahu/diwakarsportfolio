@@ -6,6 +6,13 @@ export const profile = {
   email: "dbd7667@gmail.com",
   phone: "+91 7667883632",
   linkedin: "linkedin.com/in/divya-bahu-diwakar-a7942a210",
+  github: "github.com/divyabahu",
+  roles: [
+    "AWS & Azure Cloud Engineer",
+    "Solutions Architect Professional",
+    "Cloud Migration Lead",
+    "DevOps & FinOps Practitioner",
+  ],
   photo: "/profile/divya-profile-v3.jpg",
   resume: "/resume/Divya_Bahu_Diwakar_Resume.pdf?v=2026-10-21",
   summary:
@@ -13,10 +20,10 @@ export const profile = {
 };
 
 export const metrics = [
-  { label: "Years in Cloud", value: "4.1", unit: "yrs" },
-  { label: "AWS Accounts Governed", value: "100+", unit: "via SaaS platform" },
-  { label: "Cost Savings Achieved", value: "40", unit: "%" },
-  { label: "Servers Migrated (6 clients)", value: "70", unit: "servers" },
+  { label: "Years in AWS & Azure", value: "4+" },
+  { label: "AWS Accounts Governed", value: "100+" },
+  { label: "Infrastructure Cost Savings", value: "40%" },
+  { label: "Servers Migrated (6 clients)", value: "70" },
 ];
 
 export const services = [
@@ -111,6 +118,7 @@ export const experience = [
     role: "Cloud Consultant",
     period: "Jan 2023 — Present",
     location: "Hyderabad, India",
+    tags: ["AWS", "Azure", "AWS Transform", "Azure Migrate", "Amazon EKS", "GitHub Actions", "Python", "Security Hub", "FinOps"],
     points: [
       "Designed and deployed end-to-end AWS architecture across EC2, VPC, Route53 and S3, ensuring scalability, high availability and secure operations.",
       "Led migration of 27 on-premises VMware servers to AWS through AWS Transform, using its discovery tools for server inventory and assessment.",
@@ -136,6 +144,7 @@ export const experience = [
     role: "Software Developer Intern",
     period: "Aug 2022 — Dec 2022",
     location: "India",
+    tags: ["React.js", "JavaScript", "HTML", "CSS"],
     points: [
       "Built single-page e-commerce web apps with HTML, CSS, JavaScript and React.js — product listing, cart and routing.",
       "Optimized front-end rendering performance through efficient state management and reusable component design.",

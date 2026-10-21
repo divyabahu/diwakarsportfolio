@@ -2,120 +2,112 @@ import { useEffect, useState } from 'react'
 import { profile } from '../data.js'
 
 const links = [
-  { href: '/#about', label: 'about' },
-  { href: '/#skills', label: 'stack' },
-  { href: '/#experience', label: 'experience' },
-  { href: '/#projects', label: 'projects' },
-  { href: '/#certifications', label: 'certs' },
-  { href: '/blogs/', label: 'blogs' },
-  { href: '/#contact', label: 'contact' },
+  { id: 'home', href: '/#home', label: 'Home' },
+  { id: 'about', href: '/#about', label: 'About' },
+  { id: 'experience', href: '/#experience', label: 'Experience' },
+  { id: 'skills', href: '/#skills', label: 'Skills' },
+  { id: 'projects', href: '/#projects', label: 'Projects' },
+  { id: 'certifications', href: '/#certifications', label: 'Certifications' },
+  { id: 'blogs', href: '/blogs/', label: 'Blogs' },
+  { id: 'contact', href: '/#contact', label: 'Contact' },
 ]
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+export default function Navbar({ page = 'home' }) {
+  const [active, setActive] = useState(page === 'blogs' ? 'blogs' : 'home')
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Highlight the section currently on screen (home page only).
+  useEffect(() => {
+    if (page !== 'home' || !('IntersectionObserver' in window)) return
+    const sections = links.map(l => document.getElementById(l.id)).filter(Boolean)
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) }),
+      { rootMargin: '-45% 0px -50% 0px' }
+    )
+    sections.forEach(s => io.observe(s))
+    return () => io.disconnect()
+  }, [page])
+
   return (
-    <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
-      <div className="container navbar__inner">
-        <a href="/#top" className="navbar__brand mono">
-          <span className="navbar__dot" />
-          {profile.name.split(' ').map(w => w[0]).join('')}<span className="navbar__brand-full"> · {profile.name}</span>
+    <header className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
+      <div className="container nav__inner">
+        <a href="/#home" className="nav__logo">
+          {profile.name}<span className="nav__logo-dot">.</span>
         </a>
 
-        <nav className="navbar__links">
+        <nav className="nav__links" aria-label="Main">
           {links.map(l => (
-            <a key={l.href} href={l.href} className="mono">{l.label}</a>
+            <a key={l.id} href={l.href} className={active === l.id ? 'is-active' : ''}>{l.label}</a>
           ))}
         </nav>
 
-        <a className="navbar__cta mono" href={`mailto:${profile.email}`}>get in touch</a>
-
         <button
-          className="navbar__toggle"
+          className="nav__toggle"
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen(o => !o)}
         >
-          <span /><span /><span />
+          <i className={`fas ${open ? 'fa-xmark' : 'fa-bars'}`} />
         </button>
       </div>
 
       {open && (
-        <div className="navbar__mobile">
+        <div className="nav__mobile">
           {links.map(l => (
-            <a key={l.href} href={l.href} className="mono" onClick={() => setOpen(false)}>{l.label}</a>
+            <a key={l.id} href={l.href} className={active === l.id ? 'is-active' : ''} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
-          <a className="mono navbar__mobile-cta" href={`mailto:${profile.email}`}>get in touch</a>
         </div>
       )}
 
       <style>{`
-        .navbar {
-          position: sticky;
-          top: 0;
-          z-index: 50;
+        .nav {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+          height: var(--nav-h);
+          background: rgba(255, 255, 253, 0.92);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border-bottom: 1px solid transparent;
-          background: rgba(10,14,20,0.6);
-          backdrop-filter: blur(10px);
-          transition: border-color .2s ease, background .2s ease;
+          transition: border-color .2s ease, box-shadow .2s ease;
         }
-        .navbar--scrolled { border-color: var(--border); background: rgba(10,14,20,0.85); }
-        .navbar__inner {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 64px;
+        .nav--scrolled { border-color: var(--border); box-shadow: 0 4px 18px -12px rgba(19,52,59,0.25); }
+        .nav__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+        .nav__logo { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--primary); white-space: nowrap; }
+        .nav__logo-dot { color: var(--text); }
+        .nav__links { display: flex; gap: 26px; }
+        .nav__links a {
+          position: relative; font-size: 14px; font-weight: 500; color: var(--muted);
+          padding: 6px 0; transition: color .2s ease;
         }
-        .navbar__brand {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 14px;
-          font-weight: 600;
-          color: var(--text);
+        .nav__links a::after {
+          content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+          border-radius: 2px; background: var(--primary);
+          transform: scaleX(0); transition: transform .25s ease;
         }
-        .navbar__dot {
-          width: 8px; height: 8px; border-radius: 2px;
-          background: linear-gradient(135deg, var(--aws), var(--azure));
-        }
-        .navbar__brand-full { color: var(--text-dim); font-weight: 400; }
-        .navbar__links { display: flex; gap: 28px; }
-        .navbar__links a { font-size: 13px; color: var(--text-dim); transition: color .15s ease; }
-        .navbar__links a:hover { color: var(--text); }
-        .navbar__cta {
-          font-size: 12px;
-          border: 1px solid var(--border);
-          padding: 8px 14px;
-          border-radius: 6px;
-          color: var(--text);
-          transition: border-color .15s ease, background .15s ease;
-        }
-        .navbar__cta:hover { border-color: var(--azure); background: rgba(58,160,255,0.08); }
-        .navbar__toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; padding: 8px; }
-        .navbar__toggle span { width: 20px; height: 2px; background: var(--text); display: block; }
-        .navbar__mobile { display: none; }
+        .nav__links a:hover, .nav__links a.is-active { color: var(--primary); }
+        .nav__links a.is-active::after { transform: scaleX(1); }
+        .nav__toggle { display: none; background: none; border: none; font-size: 20px; color: var(--text); padding: 8px; }
+        .nav__mobile { display: none; }
 
-        @media (max-width: 820px) {
-          .navbar__links, .navbar__cta { display: none; }
-          .navbar__brand-full { display: none; }
-          .navbar__toggle { display: flex; }
-          .navbar__mobile {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            padding: 8px 20px 20px;
-            border-top: 1px solid var(--border);
+        @media (max-width: 980px) {
+          .nav__links { display: none; }
+          .nav__toggle { display: block; }
+          .nav__mobile {
+            display: flex; flex-direction: column;
+            background: var(--surface); border-bottom: 1px solid var(--border);
+            padding: 8px 20px 16px;
           }
-          .navbar__mobile a { padding: 12px 0; color: var(--text-dim); font-size: 14px; border-bottom: 1px solid var(--border); }
-          .navbar__mobile-cta { color: var(--azure) !important; }
+          .nav__mobile a { padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 500; }
+          .nav__mobile a.is-active { color: var(--primary); }
         }
+        @media (max-width: 420px) { .nav__logo { font-size: 16px; } }
       `}</style>
     </header>
   )
