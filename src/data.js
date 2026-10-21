@@ -7,7 +7,7 @@ export const profile = {
   phone: "+91 7667883632",
   linkedin: "linkedin.com/in/divya-bahu-diwakar-a7942a210",
   photo: "/profile/divya-profile-v3.jpg",
-  resume: "/resume/Divya_Bahu_Diwakar_Resume.pdf",
+  resume: "/resume/Divya_Bahu_Diwakar_Resume.pdf?v=2026-10-21",
   summary:
     "AWS Certified Solutions Architect Professional with 4.1+ years designing and operating scalable, secure multi-cloud infrastructure across AWS and Azure. I have migrated 70 on-premises VMware and Hyper-V servers to AWS and Azure across 6 clients using AWS Transform and Azure Migrate, cutting infrastructure costs by 15–35%. I automate remediation and cost workflows with Python and Lambda, run Well-Architected Reviews at scale, operate containerized workloads on Amazon EKS with CI/CD image pipelines into ECR, and built an internal SaaS platform that centralizes AWS governance, security assessment and FinOps reporting across 100+ client accounts.",
 };
@@ -16,7 +16,7 @@ export const metrics = [
   { label: "Years in Cloud", value: "4.1", unit: "yrs" },
   { label: "AWS Accounts Governed", value: "100+", unit: "via SaaS platform" },
   { label: "Cost Savings Achieved", value: "40", unit: "%" },
-  { label: "Servers Migrated to Cloud", value: "70", unit: "across 6 clients" },
+  { label: "Servers Migrated (6 clients)", value: "70", unit: "servers" },
 ];
 
 export const services = [

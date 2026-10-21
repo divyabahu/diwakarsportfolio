@@ -1,16 +1,19 @@
 :root {
-  --bg: #0a0e14;
-  --panel: #10151d;
-  --panel-2: #131a24;
-  --border: #202a37;
-  --text: #e6edf3;
-  --text-dim: #8b98a8;
-  --text-faint: #5b6674;
-  --aws: #ff9f1c;
-  --azure: #3aa0ff;
-  --green: #3fb950;
-  --violet: #b083f0;
-  --red: #f0665f;
+  --bg: #111a30;
+  --panel: #18233f;
+  --panel-2: #1d2a4a;
+  --border: #2b3a60;
+  --text: #f3f6fc;
+  --text-dim: #b4c1d8;
+  --text-faint: #8393b0;
+  --aws: #ffa938;
+  --azure: #4db5ff;
+  --green: #3ee0a1;
+  --violet: #bb8eff;
+  --red: #ff7b8b;
+  --pink: #ff74c0;
+  --teal: #31e3d3;
+  --grad: linear-gradient(90deg, var(--azure), var(--violet) 55%, var(--pink));
 
   --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
   --font-body: 'Inter', 'Segoe UI', sans-serif;
@@ -34,10 +37,13 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
   background-image:
-    radial-gradient(circle at 15% 0%, rgba(58,160,255,0.08), transparent 40%),
-    radial-gradient(circle at 85% 15%, rgba(255,159,28,0.06), transparent 45%);
+    radial-gradient(circle at 8% 0%, rgba(77,181,255,0.24), transparent 38%),
+    radial-gradient(circle at 92% 6%, rgba(187,142,255,0.22), transparent 40%),
+    radial-gradient(circle at 85% 62%, rgba(255,116,192,0.12), transparent 42%),
+    radial-gradient(circle at 4% 78%, rgba(49,227,211,0.13), transparent 40%);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -101,3 +107,89 @@ section:last-of-type { border-bottom: none; }
   section { padding: 64px 0; }
   .container { padding: 0 20px; }
 }
+
+/* ---------- Colour theme layer ---------- */
+/* Each section gets its own accent colour. */
+#top { --accent: var(--green); }
+#about { --accent: var(--azure); }
+#skills { --accent: var(--teal); }
+#experience { --accent: var(--violet); }
+#projects { --accent: var(--pink); }
+#certifications { --accent: var(--aws); }
+#education { --accent: var(--green); }
+#contact { --accent: var(--azure); }
+#blogs { --accent: var(--pink); }
+
+.eyebrow { color: var(--accent, var(--text-faint)); }
+.eyebrow::before {
+  background: var(--accent, var(--green));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, var(--green)) 25%, transparent);
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  border-radius: 3px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, var(--accent, var(--azure)), var(--violet));
+}
+section { border-bottom-color: rgba(255,255,255,0.06); }
+
+.panel {
+  background:
+    linear-gradient(160deg, rgba(77,181,255,0.08), rgba(187,142,255,0.05) 55%, rgba(255,116,192,0.04)),
+    var(--panel);
+  box-shadow: 0 14px 34px -22px rgba(0,0,0,0.7);
+}
+#root section .panel { transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+#root section .panel:hover {
+  border-color: color-mix(in srgb, var(--accent, var(--azure)) 60%, var(--border));
+  box-shadow: 0 16px 38px -22px color-mix(in srgb, var(--accent, var(--azure)) 55%, transparent);
+}
+
+/* Navbar */
+#root .navbar { background: rgba(17,26,48,0.6); }
+#root .navbar--scrolled { background: rgba(17,26,48,0.9); border-color: var(--border); }
+#root .navbar__links a:hover { color: var(--azure); }
+#root .navbar__cta { border-color: transparent; background: var(--grad); color: #fff; font-weight: 600; }
+#root .navbar__cta:hover { filter: brightness(1.1); }
+
+/* Hero */
+#root .btn--primary { background: linear-gradient(90deg, var(--azure), var(--violet)); color: #fff; }
+#root .btn--primary:hover { background: linear-gradient(90deg, var(--violet), var(--pink)); color: #fff; }
+#root .btn--ghost:hover { border-color: var(--azure); color: var(--text); }
+#root .hero__metric:nth-child(1) .hero__metric-value { color: var(--azure); }
+#root .hero__metric:nth-child(2) .hero__metric-value { color: var(--violet); }
+#root .hero__metric:nth-child(3) .hero__metric-value { color: var(--teal); }
+#root .hero__metric:nth-child(4) .hero__metric-value { color: var(--aws); }
+
+/* Colourful chips (skills and project stacks) */
+#root .skills__chip:nth-child(5n+1), #root .proj__stack .tag:nth-child(5n+1) { color: var(--azure);  border-color: rgba(77,181,255,0.4);  background: rgba(77,181,255,0.10); }
+#root .skills__chip:nth-child(5n+2), #root .proj__stack .tag:nth-child(5n+2) { color: var(--teal);   border-color: rgba(49,227,211,0.4);  background: rgba(49,227,211,0.10); }
+#root .skills__chip:nth-child(5n+3), #root .proj__stack .tag:nth-child(5n+3) { color: var(--violet); border-color: rgba(187,142,255,0.4); background: rgba(187,142,255,0.10); }
+#root .skills__chip:nth-child(5n+4), #root .proj__stack .tag:nth-child(5n+4) { color: var(--pink);   border-color: rgba(255,116,192,0.4); background: rgba(255,116,192,0.10); }
+#root .skills__chip:nth-child(5n+5), #root .proj__stack .tag:nth-child(5n+5) { color: var(--aws);    border-color: rgba(255,169,56,0.4);  background: rgba(255,169,56,0.10); }
+
+/* Coloured top edge on cards */
+#root .skills__card:nth-child(6n+1), #root .proj__card:nth-child(5n+1), #root .blogs__card:nth-child(5n+1) { border-top: 3px solid var(--azure); }
+#root .skills__card:nth-child(6n+2), #root .proj__card:nth-child(5n+2), #root .blogs__card:nth-child(5n+2) { border-top: 3px solid var(--teal); }
+#root .skills__card:nth-child(6n+3), #root .proj__card:nth-child(5n+3), #root .blogs__card:nth-child(5n+3) { border-top: 3px solid var(--violet); }
+#root .skills__card:nth-child(6n+4), #root .proj__card:nth-child(5n+4), #root .blogs__card:nth-child(5n+4) { border-top: 3px solid var(--pink); }
+#root .skills__card:nth-child(6n+5), #root .proj__card:nth-child(5n+5), #root .blogs__card:nth-child(5n+5) { border-top: 3px solid var(--aws); }
+#root .skills__card:nth-child(6n+6) { border-top: 3px solid var(--green); }
+#root .skills__card-cmd { color: var(--teal); }
+
+/* Experience */
+#root .exp__dot { background: var(--grad); box-shadow: 0 0 0 4px rgba(187,142,255,0.22); }
+#root .exp__bar { background: linear-gradient(180deg, var(--violet), transparent); opacity: .6; }
+#root .exp__company { color: var(--azure); }
+#root .exp__points li::marker { color: var(--violet); }
+
+/* Projects, education, contact, blogs */
+#root .proj__tag { color: var(--pink); }
+#root .edu__period { color: var(--green); }
+#root a.contact__value:hover { color: var(--pink); }
+#root .contact__copy:hover { border-color: var(--pink); }
+#root .blogs__media, #root .blogs__media img, #root .blogs__media video { background: #0c1426; }
+#root .blogs__tag { color: var(--pink); }
