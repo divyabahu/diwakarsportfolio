@@ -3,7 +3,7 @@
 
 export const blogIntro = {
   title: "Public cloud, in the room.",
-  sub: "Photos and clips from the cloud sessions I hosted at Infosprint Technologies — AWS migration, cloud security and how businesses move to the public cloud with less risk.",
+  sub: "Photos and clips from the cloud sessions I hosted at Infosprint Technologies — AWS Well-Architected Reviews, cloud security and how businesses run the public cloud with less risk.",
 }
 
 export const posts = [
@@ -17,33 +17,33 @@ export const posts = [
   {
     type: "image",
     src: "/blogs/media/map-session-audience.jpg",
-    title: "Chart your course with AWS MAP",
-    tag: "AWS Migration",
-    caption: "A full room for our AWS Migration Acceleration Program (MAP) session, walking business and IT leaders through how a migration moves from assessment to the public cloud.",
+    title: "AWS Well-Architected Framework Review",
+    tag: "Well-Architected Review",
+    caption: "A full room for our AWS Well-Architected Framework Review (WAR) session, showing business and IT leaders how to check their cloud workloads against AWS best practices.",
   },
   {
     type: "video",
     src: "/blogs/media/map-pillars.mp4",
     poster: "/blogs/media/map-pillars.jpg",
-    title: "The pillars of AWS MAP",
-    tag: "AWS Migration",
-    caption: "Explaining the building blocks of the Migration Acceleration Program and how a phased plan, tooling and AWS support take the risk out of moving workloads.",
+    title: "The six pillars of the Well-Architected Framework",
+    tag: "Well-Architected Review",
+    caption: "Walking through the six pillars: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization and Sustainability, and what each one asks of a cloud workload.",
   },
   {
     type: "video",
     src: "/blogs/media/map-session-room.mp4",
     poster: "/blogs/media/map-session-room.jpg",
-    title: "Why move to the public cloud?",
-    tag: "Discussion",
-    caption: "An open discussion with attendees on why companies are moving from on-premises data centres to the public cloud, and what usually holds them back.",
+    title: "Reviewing workloads together",
+    tag: "Well-Architected Review",
+    caption: "An open discussion with attendees on where their AWS workloads stand today, and the gaps a Well-Architected Review usually uncovers.",
   },
   {
     type: "video",
     src: "/blogs/media/map-deep-dive.mp4",
     poster: "/blogs/media/map-deep-dive.jpg",
-    title: "Planning the move, slide by slide",
-    tag: "AWS Migration",
-    caption: "Attendees capturing the slides during the deep-dive on planning a migration to AWS: what to move first, and how to keep downtime low.",
+    title: "From findings to fixes",
+    tag: "Well-Architected Review",
+    caption: "Attendees capturing the slides as we went through review findings by pillar, and how to prioritise high-risk issues into a remediation plan.",
   },
   {
     type: "image",
