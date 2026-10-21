@@ -1,7 +1,7 @@
 export const profile = {
   name: "Divya Bahu Diwakar",
   role: "AWS & Azure Cloud Engineer",
-  tagline: "Solutions Architect Professional · DevOps · Kubernetes · Cloud Security · FinOps",
+  tagline: "Solutions Architect Professional · Cloud Migration · DevOps · Kubernetes · Cloud Security · FinOps",
   location: "Hyderabad, India",
   email: "dbd7667@gmail.com",
   phone: "+91 7667883632",
@@ -9,14 +9,14 @@ export const profile = {
   photo: "/profile/divya-profile-v3.jpg",
   resume: "/resume/Divya_Bahu_Diwakar_Resume.pdf",
   summary:
-    "AWS Certified Solutions Architect Professional with 4.1+ years designing and operating scalable, secure multi-cloud infrastructure across AWS and Azure. I automate remediation and cost workflows with Python and Lambda, run Well-Architected Reviews at scale, operate containerized workloads on Amazon EKS with CI/CD image pipelines into ECR, and built an internal SaaS platform that centralizes AWS governance, security assessment and FinOps reporting across 100+ client accounts.",
+    "AWS Certified Solutions Architect Professional with 4.1+ years designing and operating scalable, secure multi-cloud infrastructure across AWS and Azure. I have migrated 70 on-premises VMware and Hyper-V servers to AWS and Azure across 6 clients using AWS Transform and Azure Migrate, cutting infrastructure costs by 15–35%. I automate remediation and cost workflows with Python and Lambda, run Well-Architected Reviews at scale, operate containerized workloads on Amazon EKS with CI/CD image pipelines into ECR, and built an internal SaaS platform that centralizes AWS governance, security assessment and FinOps reporting across 100+ client accounts.",
 };
 
 export const metrics = [
   { label: "Years in Cloud", value: "4.1", unit: "yrs" },
   { label: "AWS Accounts Governed", value: "100+", unit: "via SaaS platform" },
   { label: "Cost Savings Achieved", value: "40", unit: "%" },
-  { label: "AWS Certifications", value: "4", unit: "active" },
+  { label: "Servers Migrated to Cloud", value: "70", unit: "across 6 clients" },
 ];
 
 export const services = [
@@ -40,6 +40,13 @@ export const services = [
     status: "operational",
     detail: "GitHub Actions · Docker · Kubernetes · EKS · ECR",
     accent: "green",
+  },
+  {
+    id: "migration",
+    name: "Cloud Migration",
+    status: "operational",
+    detail: "AWS Transform · Azure Migrate · VMware ESXi · Hyper-V · Lift-and-Shift",
+    accent: "aws",
   },
   {
     id: "security",
@@ -71,6 +78,14 @@ export const skillGroups = [
     items: [
       "Virtual Machines", "VNets", "WAF", "Defender", "Azure Site Recovery",
       "Storage Accounts", "Azure Backup", "Private Endpoints", "Azure AD",
+    ],
+  },
+  {
+    title: "Cloud Migration & Virtualization",
+    mono: "migrate --plan",
+    items: [
+      "AWS Transform", "AWS Transform Discovery Tools", "Azure Migrate", "Lift-and-Shift",
+      "On-Premises to Cloud", "VMware ESXi", "Microsoft Hyper-V",
     ],
   },
   {
@@ -107,6 +122,10 @@ export const experience = [
       "Strengthened cloud security governance with IAM, GuardDuty, Inspector and Security Hub aligned to CIS and PCI-DSS benchmarks, lifting average Security Hub compliance scores from 52% to 94% across audited accounts.",
       "Configured load balancers, auto scaling groups, SSL certificates and hybrid networking for production workloads.",
       "Established CI/CD pipelines with GitHub Actions across dev and production environments.",
+      "Led migration of 27 on-premises VMware servers to AWS through AWS Transform, using its discovery tools for server inventory and assessment.",
+      "Executed Lift-and-Shift migration of 7 on-premises Microsoft Hyper-V servers into Amazon EC2 with AWS Transform, including post-migration validation.",
+      "Delivered migration of 36 VMware servers to Microsoft Azure using Azure Migrate, covering discovery, assessment, replication and cutover.",
+      "Completed 70 server migrations across 6 client engagements within a 2-hour RTO and 45-minute RPO, cutting infrastructure costs by 15–35%.",
       "Migrated production servers from AWS to Azure via Lift-and-Shift using Azure Migrate, and led containerization initiatives with Docker, Kubernetes and Amazon EKS/ECR for hybrid modernization.",
       "Enabled disaster recovery and backup automation with Azure Recovery Services Vault, achieving recovery time objectives as low as 1 hour 22 minutes.",
       "Partnered directly with clients on governance, tagging policy, compliance tracking and cost-visibility dashboards.",
@@ -132,6 +151,13 @@ export const projects = [
     description:
       "Architected an enterprise-grade platform giving Infosprint centralized monitoring and governance over 100+ client AWS accounts from a single console — automated discovery across EC2, VPCs, IAM, Security Groups, GuardDuty and Billing, multi-account Well-Architected Reviews, scheduled FinOps and security reports, Stripe-billed subscriptions across four pricing tiers, and one-click PDF report delivery.",
     stack: ["React 18", "Node.js/Express", "Amazon RDS", "AWS", "Stripe", "Secrets Manager", "PDFKit"],
+  },
+  {
+    name: "On-Premises to AWS & Azure Migration Program",
+    tag: "Cloud Migration",
+    description:
+      "Moved 70 on-premises servers to the cloud across 6 client engagements: 27 VMware servers to AWS with AWS Transform and its discovery tools, 7 Microsoft Hyper-V servers into Amazon EC2 with AWS Transform, and 36 VMware servers to Azure with Azure Migrate. Every cutover stayed within a 2-hour RTO and 45-minute RPO, and clients cut infrastructure costs by 15–35%.",
+    stack: ["AWS Transform", "Azure Migrate", "VMware ESXi", "Hyper-V", "Amazon EC2", "Azure VMs"],
   },
   {
     name: "Multi-Client FinOps Automation",
@@ -206,5 +232,15 @@ export const education = [
     school: "C.V. Raman Global University, Bhubaneswar",
     degree: "Bachelor of Technology, Mechanical Engineering",
     period: "2018 — 2022",
+  },
+  {
+    school: "Banshi Dhari High School",
+    degree: "Intermediate",
+    period: "2016 — 2018",
+  },
+  {
+    school: "S.T Karens High School",
+    degree: "Matriculation",
+    period: "2015 — 2016",
   },
 ];
